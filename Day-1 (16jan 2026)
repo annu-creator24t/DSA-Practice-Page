@@ -1,0 +1,19 @@
+  // pArameterized Constructor
+class Student{
+    int rollNumber;
+    String name;
+    
+    Student(int i ,String n){
+        rollNumber=i;
+        name=n;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	    Student obj=new Student(1,"Annu");
+		System.out.println(obj.rollNumber);
+		System.out.println(obj.name);
+		
+	}
+}
