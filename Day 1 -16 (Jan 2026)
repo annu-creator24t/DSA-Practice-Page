@@ -1,0 +1,14 @@
+class Student {
+    int rollNumber;
+    String name;
+}
+
+public class main{
+     public static void main(String[] args) {
+        Student obj=new Student();
+        obj.rollNumber=1;
+        obj.name="Abhisek";
+        
+        System.out.println(obj.rollNumber);
+   }
+}
