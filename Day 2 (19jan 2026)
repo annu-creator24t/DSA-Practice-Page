@@ -1,0 +1,19 @@
+// Dereferencing
+
+class Student{
+    int marks=80;
+}
+    
+public class Main
+{
+	public static void main(String[] args) {
+		Student s1=new Student();//refernce variable --s1(object)
+		Student s2=s1; //same object
+		s2=null;
+		System.out.println(s1.marks);
+		System.out.println(s2.marks); // if we run this we get null pointer exception
+	
+	}
+}
+
+
