@@ -1,4 +1,4 @@
-// code 1- Creating behaviours (methods)
+code 1- Creating behaviours (methods)
 
 class Student{
     void study(){
@@ -19,7 +19,7 @@ public class Main
 }
 
 
-//code 2 - reference 
+code 2 - reference 
 public class Student{
 int marks = 80;
 
@@ -31,7 +31,7 @@ public static void main(String[] args){
 }
 
 
-//code 3- multiple references 
+code 3- multiple references 
 
 class Student{
     int marks=80;
@@ -52,7 +52,7 @@ public class Main
 
 
 
-//code -4 Dereferencing
+code -4 Dereferencing
 
 class Student{
     int marks=80;
@@ -70,8 +70,33 @@ public class Main
 	}
 }
 
+Code 5- Pass by reference concepts
 
-//code -5 List
+// -- Java is pass by value
+// -- the value passed is the reference
+// -- Changes made to any object are reflected outside method
+
+// Pass by reference concepts
+class Student {
+    int marks = 80;
+}
+
+public class Main
+{
+    static void updateMarks(Student s) {
+        s.marks += 2;
+    }
+
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        updateMarks(s1);
+
+        System.out.println(s1.marks); // 80 + 2 == 82
+    }
+}
+
+
+code -6 List
 import  java.util.*;
 class Student {
 int id;
@@ -96,7 +121,7 @@ public class Main
 	}
 }
 
-// code 6- Map
+code 7- Map
 
 import  java.util.*;
 class Student {
