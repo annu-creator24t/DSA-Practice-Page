@@ -1,0 +1,18 @@
+//reference variables and multiple references 
+
+class Student{
+    int marks=80;
+}
+    
+public class Main
+{
+	public static void main(String[] args) {
+		Student s1=new Student();//refernce variable --s1(object)
+		Student s2=s1; //same object
+		s2.marks=90;
+		s3.marks=100;
+		System.out.println(s1.marks);
+		System.out.println(s2.marks);
+		System.out.println(s3.marks);
+	}
+}
