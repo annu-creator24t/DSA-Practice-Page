@@ -19,3 +19,68 @@ public class Main
 		s2.display();
 	}
 }
+
+code 2- Static Methods
+
+class Square{
+    static int square(int num){
+        return num * num ;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		System.out.println(Square.square(5));
+	}
+}
+
+//it is called using the class name 
+
+//difference between static and instance variable and method 
+-->Static is accessed by class name 
+-->in stance is accessed by object name 
+-->in static no need to use this keyword 
+-->in instance we need to use this keyword 
+-->in static we make a single copy 
+-->in instance we make a multiple copies 
+
+
+
+
+Code3 -Aggregation and dependencies 
+
+class Address{ //class
+    String city; //instance 
+    Address (String city){  //constructor
+        this.city = city;
+    }
+    public String getCity(){
+        return city;
+    }
+}
+
+//Student class (Aggregate Address)
+class Student{
+    private String name;
+    private Address address; //Aggregation 
+    
+    
+    Student(String name, Address address){
+        this.name = name;
+        this.address = address;
+    }
+    
+    void display(){
+        System.out.println(name, "lives " + address.hetCity());
+    }
+}
+
+
+public class Main{
+    public static void main(String[] args){
+        Address add = new Address("Delhi");
+        Student s1 = new Student("Sanjeev", add);
+        
+        s1.display();
+    }
+}
