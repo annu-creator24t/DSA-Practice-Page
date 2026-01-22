@@ -1,0 +1,21 @@
+Code 1- Static Variables
+
+class Student{
+    static String collegeName="IILM";
+    String name;
+    Student (String name){
+        this.name=name;
+    }
+    void display(){
+        System.out.println("name + studied at"+ collegeName);
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		Student s1=new Student("Aman");
+		Student s2=new Student("Aman");
+		s1.display();
+		s2.display();
+	}
+}
