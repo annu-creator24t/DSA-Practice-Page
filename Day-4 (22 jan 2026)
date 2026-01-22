@@ -20,6 +20,8 @@ public class Main
 	}
 }
 
+
+
 code 2- Static Methods
 
 class Square{
@@ -82,5 +84,31 @@ public class Main{
         Student s1 = new Student("Sanjeev", add);
         
         s1.display();
+    }
+}
+
+code 4- dependencies 
+
+//One class is dependent on another class temporarily
+//No permenant storage is there 
+
+class Payment{
+    void pay(){
+        System.out.println("Payment Successful");
+    }
+}
+
+class Gpay{
+    void processPayment(Payment p){
+        p.pay();
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+        Gpay pay = new Gpay();
+        Payment payment = new Payment();
+        
+        pay.processPayment(payment);
     }
 }
