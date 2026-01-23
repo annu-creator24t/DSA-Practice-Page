@@ -1,3 +1,5 @@
+code 1- single level inheritance
+
 class Vehicle{
     void start(){
         System.out.println("Vehicle starts");
@@ -14,5 +16,34 @@ class Main {
         Bike b=new Bike();
         b.start();
         b.drive();
+    }
+}
+
+code 2 - Multi level inheritance
+
+class Vehicle {
+    void start() {
+        System.out.println("Vehicle starts");
+    }
+}
+
+class Bike extends Vehicle {
+    void drive() {
+        System.out.println("Bike running");
+    }
+}
+
+class SportsBike extends Bike {
+    void turbo() {
+        System.out.println("Turbo boosted");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        SportsBike sb = new SportsBike();
+        sb.start(); 
+        sb.drive();  
+        sb.turbo();   
     }
 }
