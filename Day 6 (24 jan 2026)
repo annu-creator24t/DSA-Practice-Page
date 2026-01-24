@@ -27,3 +27,33 @@ public class Main {
         s.eatingFood();
     }
 }
+
+code 2 - Super Keyword
+
+class Person {
+    // Runs first when CollegeStudent object is created because of inheritance (via super)
+    Person(String name) {
+        System.out.println("Person Name: " + name);
+    }
+}
+
+// Child class inheriting Person
+class CollegeStudent extends Person {
+
+    // Constructor of CollegeStudent
+    CollegeStudent(String name) {
+
+        // Calls the parent (Person) constructor first
+        // super() must be the first line in a child constructor
+        super(name);
+
+        System.out.println("College student constructor called");
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+        CollegeStudent cs = new CollegeStudent("Annu");
+    }
+}
