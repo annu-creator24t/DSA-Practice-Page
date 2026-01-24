@@ -1,4 +1,6 @@
-code 1 - Interface
+------------------code 1------------------ 
+
+// Interface
 // An interface in a java is an Abstract type that defines a set of methods a class must implements
 // Multiple interfaces using interfaces
 
@@ -28,7 +30,9 @@ public class Main {
     }
 }
 
-code 2 - Super Keyword
+
+------------------code 2 ---------------------
+// Super Keyword
 
 class Person {
     // Runs first when CollegeStudent object is created because of inheritance (via super)
@@ -59,8 +63,8 @@ public class Main {
 }
 
 
-
-Code 3- Inheriting Attributes 
+ ------------------Code 3----------------------
+// Inheriting Attributes 
 
 class University{
     String UniversityName = "IILM University";
@@ -78,5 +82,28 @@ public class Main
 	public static void main(String[] args) {
 		College c = new College();
 		c.displayUniversityName();
+	}
+}
+
+
+-------------code 4--------------
+//Inheriting methods 
+
+class Parent{
+    void pocketMoney(){
+        System.out.println("Pocket Money Credit");
+    }
+}
+class child extends Parent{
+    void freelancing(){
+        System.out.println("khud ka paisa");
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		child ch = new child();
+		ch.pocketMoney();
+		ch.freelancing();
 	}
 }
