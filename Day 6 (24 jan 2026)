@@ -1,0 +1,29 @@
+code 1 - Interface
+// An interface in a java is an Abstract type that defines a set of methods a class must implements
+// Multiple interfaces using interfaces
+
+interface tv {
+    void watchingTv();
+}
+
+interface food {
+    void eatingFood();
+}
+
+class Student implements tv, food {
+    public void watchingTv() {
+        System.out.println("watchingTv");
+    }
+
+    public void eatingFood() {
+        System.out.println("eatingFood");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.watchingTv();
+        s.eatingFood();
+    }
+}
