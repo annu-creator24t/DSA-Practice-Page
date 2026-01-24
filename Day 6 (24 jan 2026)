@@ -86,7 +86,7 @@ public class Main
 }
 
 
--------------code 4--------------
+------------------code 4---------------------
 //Inheriting methods 
 
 class Parent{
@@ -105,5 +105,29 @@ public class Main
 		child ch = new child();
 		ch.pocketMoney();
 		ch.freelancing();
+	}
+}
+
+
+
+------------------code 5----------------------
+// Overriding 
+
+class CollegeStudent{
+    void task(){
+        System.out.println("Eating Food");
+    }
+}
+class Student extends CollegeStudent{
+    @Override
+    void task(){
+        System.out.println("Pani pira h");
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		CollegeStudent obj = new Student();
+		obj.task();
 	}
 }
