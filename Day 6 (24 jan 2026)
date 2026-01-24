@@ -57,3 +57,26 @@ public class Main {
         CollegeStudent cs = new CollegeStudent("Annu");
     }
 }
+
+
+
+Code 3- Inheriting Attributes 
+
+class University{
+    String UniversityName = "IILM University";
+}
+
+
+class College extends University{
+    void displayUniversityName(){
+        System.out.println("University : " + UniversityName);
+    }
+}
+ 
+public class Main
+{
+	public static void main(String[] args) {
+		College c = new College();
+		c.displayUniversityName();
+	}
+}
