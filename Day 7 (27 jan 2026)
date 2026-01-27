@@ -1,0 +1,19 @@
+
+---------------- code 1---------------------
+// Exception habdling: try catch finally
+
+public class Main
+{
+	public static void main(String[] args) {
+	  try{
+	    int balance=5000;
+	    int withdraw=6000;  
+	    int result=balance-withdraw;
+	  }catch (Exception e){
+	          System.out.println("Error Occured");
+	  }finally{
+	           System.out.println("Transaction complete");
+	  }
+	  
+	}
+}
