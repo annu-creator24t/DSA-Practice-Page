@@ -17,3 +17,23 @@ public class Main
 	  
 	}
 }
+
+
+--------------------code 2---------------------
+// Throw keyword
+
+class Bank{
+    void withdraw(int amount){
+        if(amount>5000){
+            throw new ArithmeticException("Insufficient balance");
+        }
+        System.out.println("withdraw successful");
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+	  Bank b=new Bank();
+	  b.withdraw(6000);
+	}
+}
