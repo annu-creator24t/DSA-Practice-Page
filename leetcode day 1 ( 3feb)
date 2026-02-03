@@ -9,7 +9,7 @@ Example 2:
 Input: nums = [2,2,1,1,1,2,2]
 Output: 2
 
-<-------sol----->
+<-------sol 1----->
 class Solution {
     public int majorityElement(int[] nums) {
         int candidate=-1;
@@ -38,3 +38,16 @@ class Solution {
         }else return -1;
     }
 }
+
+TC=O(n), SC=O(1)
+
+
+<-------sol 2----->
+class Solution {
+    public int majorityElement(int[] nums) {
+       Array.sort(nums);
+     return nums[nums.length/2];
+   }
+}
+
+TC=O(logn), SC=O(1)
