@@ -1,5 +1,30 @@
 <-----------42. Trapping Rain Water-------------->
 
+<-------------Bruteforce------------>
+class Solution {
+    public static int trap(int[] height) {
+        int n = height.length;
+        int waterLogged = 0;
+
+        for (int i = 0; i < n; i++) {
+            // Find left max
+            int leftMax = 0;
+            for (int j = 0; j <= i; j++) {
+                leftMax = Math.max(leftMax, height[j]);
+            }
+            // Find right max
+            int rightMax = 0;
+            for (int j = i; j < n; j++) {
+                rightMax = Math.max(rightMax, height[j]);
+            }
+            // Water at index i
+            waterLogged += Math.min(leftMax, rightMax) - height[i];
+        }
+        return waterLogged;
+    }
+}
+    Tc=O(n²) ,Sc=O(1)
+
 <-----------------Sol 1------------------>
 class Solution {
     public static int trap(int[] height) {
