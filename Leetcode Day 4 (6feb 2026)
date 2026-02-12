@@ -1,4 +1,49 @@
 <-------------56.Merge Interval----------------->
+
+<------------------Bruteforce-------------------->
+
+import java.util.*;
+
+class Solution {
+    public int[][] merge(int[][] intervals) {
+
+        // Step 1: sort by start time
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+        List<int[]> list = new ArrayList<>();
+        for (int[] interval : intervals) {
+            list.add(interval);
+        }
+
+        // Step 2: compare every interval with others
+        int i = 0;
+        while (i < list.size() - 1) {
+
+            int[] curr = list.get(i);
+            int[] next = list.get(i + 1);
+
+            // overlap check
+            if (curr[1] >= next[0]) {
+
+                // merge
+                curr[1] = Math.max(curr[1], next[1]);
+
+                // remove merged interval
+                list.remove(i + 1);
+            } 
+            else {
+                i++;
+            }
+        }
+
+        return list.toArray(new int[list.size()][]);
+    }
+}       
+    //  Tc=O(n²) ,Sc=O(n)
+
+
+<------------------Optimal Approach------------------>
+
 class Solution {
     public int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, (a,b)-> Integer.compare(a[0],b[0]));
