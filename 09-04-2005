@@ -1,0 +1,83 @@
+<-----94. Binary Tree Inorder Traversal----->
+class Solution {
+    private void traversal(TreeNode root, List<Integer> ans) {
+        if (root == null) {
+            return;
+        }      
+        traversal(root.left, ans);     
+        ans.add(root.val); 
+        traversal(root.right, ans);     
+    }
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        traversal(root, ans);
+        return ans;
+    }
+}
+
+
+<-----144. Binary Tree Preorder Traversal----->
+class Solution {
+    private void traversal(TreeNode root, List<Integer> ans) {
+        if (root == null) {
+            return;
+        }
+        ans.add(root.val);              
+        traversal(root.left, ans);     
+        traversal(root.right, ans);     
+    }
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        traversal(root, ans);
+        return ans;
+    }
+}
+
+
+<-----145. Binary Tree Postorder Traversal----->
+class Solution {
+    private void traversal(TreeNode root, List<Integer> ans) {
+        if (root == null) {
+            return;
+        }      
+        traversal(root.left, ans);     
+        traversal(root.right, ans); 
+         ans.add(root.val);     
+    }
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        traversal(root, ans);
+        return ans;
+    }
+}
+
+
+<-----104. Maximum Depth of Binary Tree----->
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        int leftHeight=maxDepth(root.left);
+        int rightHeight=maxDepth(root.right);
+        int maxHeight=Math.max(leftHeight,rightHeight)+1;
+        return maxHeight;
+    }
+}
+
+
+<-----100. Same Tree----->
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null) {
+            return true;
+        }
+        if(p == null || q == null){
+            return false;
+        }
+        if(p.val != q.val){
+            return false;
+        }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    }
+}
