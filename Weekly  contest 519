@@ -20,3 +20,37 @@ class Solution {
  return ans;
 }
 }
+
+
+
+Q2. Count Shadow Pairs I
+
+class Solution {
+    public long shadowPairs(int[] nums) {
+        long ans = 0;
+        long sum = 0;
+
+        java.util.Stack<long[]> stack = new java.util.Stack<>();
+
+        for (int x : nums) {
+
+     while (!stack.isEmpty() && stack.peek()[0] > x) {
+                sum -= stack.pop()[1];
+            }
+
+            if (!stack.isEmpty() && stack.peek()[0] == x) {
+
+                ans += sum - stack.peek()[1];
+                stack.peek()[1]++;
+            } else {
+                ans += sum;
+
+                stack.push(new long[]{x, 1});
+            }
+
+            sum++;
+        }
+
+        return ans;
+    }
+}
