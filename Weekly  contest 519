@@ -54,3 +54,264 @@ class Solution {
         return ans;
     }
 }
+
+
+
+Q3. Minimum Operations to Make Every Element Palindromic
+
+import java.util.*;
+
+class Solution {
+
+    static ArrayList<Long>[] pal = new ArrayList[2];
+
+    static {
+        pal[0] = new ArrayList<>();
+        pal[1] = new ArrayList<>();
+
+        for (int i = 1; i <= 100000; i++) {
+
+            String s = String.valueOf(i);
+
+            String rev = new StringBuilder(s).reverse().toString();
+            long evenPal = Long.parseLong(s + rev);
+
+            pal[(int)(evenPal % 2)].add(evenPal);
+
+            String firstPart = s.substring(0, s.length() - 1);
+            String revFirst = new StringBuilder(firstPart)
+                    .reverse()
+                    .toString();
+
+            long oddPal = Long.parseLong(s + revFirst);
+
+            pal[(int)(oddPal % 2)].add(oddPal);
+        }
+
+        pal[0].sort(Long::compare);
+        pal[1].sort(Long::compare);
+    }
+
+    public long minOperations(int[] nums) {
+
+        long ans = 0;
+
+        for (int x : nums) {
+
+            ArrayList<Long> list = pal[x % 2];
+
+            int left = 0;
+            int right = list.size();
+
+            while (left < right) {
+
+                int mid = (left + right) >>> 1;
+
+                if (list.get(mid) < x) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+
+            long minDistance = Long.MAX_VALUE;
+
+            if (left < list.size()) {
+                minDistance = list.get(left) - x;
+            }
+
+            if (left > 0) {
+                minDistance = Math.min(
+                    minDistance,
+                    x - list.get(left - 1)
+                );
+            }
+
+            ans += minDistance / 2;
+        }
+
+        return ans;
+    }
+}
+
+
+
+Q4. Count Shadow Pairs II
+
+import java.util.*;
+
+class Solution {
+
+    long ans;
+
+    public int shadowPairs(int[] nums) {
+
+        int n = nums.length;
+
+        int[] sorted = nums.clone();
+        Arrays.sort(sorted);
+
+        int m = 0;
+
+        for (int x : sorted) {
+            if (m == 0 || sorted[m - 1] != x) {
+                sorted[m++] = x;
+            }
+        }
+
+        int[] a = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            a[i] = Arrays.binarySearch(sorted, 0, m, nums[i]) + 1;
+        }
+
+        ans = 0;
+
+        int[] positions = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            positions[i] = i;
+        }
+
+        solve(a, positions, 1, m);
+
+        return (int) ans;
+    }
+
+    private void solve(
+            int[] nums,
+            int[] pos,
+            int low,
+            int high) {
+
+        if (nums.length < 2 || low == high) {
+            return;
+        }
+
+        int mid = (low + high) >>> 1;
+
+        ArrayList<Integer> leftValues = new ArrayList<>();
+        ArrayList<Integer> leftPositions = new ArrayList<>();
+
+        ArrayList<Integer> rightValues = new ArrayList<>();
+        ArrayList<Integer> rightPositions = new ArrayList<>();
+
+        ArrayList<Integer> lowStack = new ArrayList<>();
+
+        ArrayList<Integer> highStack = new ArrayList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int v = nums[i];
+            int originalPos = pos[i];
+
+            if (v <= mid) {
+
+                while (!lowStack.isEmpty()
+                        && nums[indexOf(lowStack, pos, originalPos)]
+                           < v) {
+
+                    lowStack.remove(lowStack.size() - 1);
+                }
+
+                lowStack.add(originalPos);
+
+                leftValues.add(v);
+                leftPositions.add(originalPos);
+
+            } else {
+
+                while (!highStack.isEmpty()
+                        && valueAt(highStack.get(highStack.size() - 1),
+                                   pos,
+                                   nums) >= v) {
+
+                    highStack.remove(highStack.size() - 1);
+                }
+
+                if (highStack.isEmpty()) {
+
+                    ans += lowStack.size();
+
+                } else {
+
+                    int p =
+                        highStack.get(highStack.size() - 1);
+
+                    int idx = upperBound(lowStack, p);
+
+                    ans += lowStack.size() - idx;
+                }
+
+                highStack.add(originalPos);
+
+                rightValues.add(v);
+                rightPositions.add(originalPos);
+            }
+        }
+
+        int[] lv = toIntArray(leftValues);
+        int[] lp = toIntArray(leftPositions);
+
+        int[] rv = toIntArray(rightValues);
+        int[] rp = toIntArray(rightPositions);
+
+        solve(lv, lp, low, mid);
+        solve(rv, rp, mid + 1, high);
+    }
+
+    private int upperBound(
+            ArrayList<Integer> list,
+            int target) {
+
+        int l = 0;
+        int r = list.size();
+
+        while (l < r) {
+
+            int mid = (l + r) >>> 1;
+
+            if (list.get(mid) <= target) {
+                l = mid + 1;
+            } else {
+                r = mid;
+            }
+        }
+
+        return l;
+    }
+
+    private int[] toIntArray(ArrayList<Integer> list) {
+
+        int[] arr = new int[list.size()];
+
+        for (int i = 0; i < list.size(); i++) {
+            arr[i] = list.get(i);
+        }
+
+        return arr;
+    }
+
+
+    private int indexOf(
+            ArrayList<Integer> stack,
+            int[] positions,
+            int target) {
+
+        return 0;
+    }
+
+    private int valueAt(
+            int position,
+            int[] positions,
+            int[] nums) {
+
+        for (int i = 0; i < positions.length; i++) {
+            if (positions[i] == position) {
+                return nums[i];
+            }
+        }
+
+        return Integer.MAX_VALUE;
+    }
+}
