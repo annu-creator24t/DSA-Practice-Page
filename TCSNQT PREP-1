@@ -66,7 +66,6 @@ class Solution {
         int secondLargest = -1;
 
         for (int i = 1; i < arr.length; i++) {
-
             if (arr[i] > largest) {
                 secondLargest = largest;
                 largest = arr[i];
@@ -119,9 +118,22 @@ class Solution {
                 return false;
             }
         }
-
         return true;
     }
 }
 
 8-Remove duplicates from Sorted Array
+
+class Solution {
+    public ArrayList<Integer> removeDuplicates(int[] arr) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        ans.add(arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] != arr[i - 1]) {
+                ans.add(arr[i]);
+            }
+        }
+
+        return ans;
+    }
+}
